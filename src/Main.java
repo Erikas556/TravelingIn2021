@@ -5,5 +5,7 @@ public class Main {
 
         System.out.println("Testuojam 123");
 
+        System.out.println(3+3);
+
     }
 }
