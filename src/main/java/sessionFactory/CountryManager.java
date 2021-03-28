@@ -37,15 +37,20 @@ public class CountryManager {
         // code to get
         Session session = sessionFactory.openSession();
 
-        int ID = 0;
-        CountryInfo countryInfo = session.get(CountryInfo.class, ID);
+        try {
 
-        System.out.println("Country Name: " + countryInfo.getCountryName());
-        System.out.println("Vaccine Requirement: " + countryInfo.isVaccineRequirement());
-        System.out.println("Test Requirement: " + countryInfo.isTestRequirement());
-        System.out.println("Test Validation Time By hours: " + countryInfo.getTestValidationTimeByHours());
+            int ID = 0;
+            CountryInfo countryInfo = session.get(CountryInfo.class, ID);
 
-       session.close();
+            System.out.println("Country Name: " + countryInfo.getCountryName());
+            System.out.println("Vaccine Requirement: " + countryInfo.isVaccineRequirement());
+            System.out.println("Test Requirement: " + countryInfo.isTestRequirement());
+            System.out.println("Test Validation Time By hours: " + countryInfo.getTestValidationTimeByHours());
+
+            session.close();
+        } catch (Exception E) {
+            E.printStackTrace();
+        }
     }
 
     private void update() {
