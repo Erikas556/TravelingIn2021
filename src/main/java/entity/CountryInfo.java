@@ -15,7 +15,6 @@ public class CountryInfo {
     private boolean vaccineRequirement;
     private boolean testRequirement;
     private int testValidationTimeByHours;
-    private boolean IsForeigner;
 
     @Id
     @Column(name = "ID")
@@ -58,13 +57,5 @@ public class CountryInfo {
 
     public void setTestValidationTimeByHours(int testValidationTimeByHours) {
         this.testValidationTimeByHours = testValidationTimeByHours;
-    }
-
-    public boolean isForeigner() {
-        return IsForeigner;
-    }
-
-    public void setForeigner(boolean foreigner) {
-        IsForeigner = foreigner;
     }
 }

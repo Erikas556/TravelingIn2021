@@ -39,7 +39,7 @@ public class CountryManager {
 
         try {
 
-            int ID = 0;
+            int ID = 1;
             CountryInfo countryInfo = session.get(CountryInfo.class, ID);
 
             System.out.println("Country Name: " + countryInfo.getCountryName());
@@ -64,6 +64,11 @@ public class CountryManager {
     public static void main(String[] args) {
         // code to run the program
         CountryManager manager = new CountryManager();
+        manager.setup();
+//        manager.create();
         manager.read();
+//        manager.update();
+//        manager.delete();
+//        manager.exit();
     }
 }
