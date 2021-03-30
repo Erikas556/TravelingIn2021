@@ -8,6 +8,7 @@ countryName VARCHAR(50),
 vaccineRequirement boolean,
 testRequirement boolean,
 testValidationTimeByHours integer,
+<<<<<<< HEAD
 foreignerAllowedToEnter boolean
 );
 
@@ -15,6 +16,13 @@ select * from countryInfo;
 
 insert into countryInfo
 (CountryName, vaccineRequirement, testRequirement, testVAlidationTimeByHours, foreignerAllowedToEnter)
+=======
+isForeignerAllowedToEnter boolean
+);
+
+insert into countryInfo
+(CountryName, vaccineRequirement, testRequirement, testVAlidationTimeByHours, ifForeignerAllowedToEnter)
+>>>>>>> master
 values
 ('Albania', FALSE, TRUE, '48', FALSE),
 ('Andorra', FALSE, TRUE, '48', FALSE),
