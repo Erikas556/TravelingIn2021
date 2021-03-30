@@ -8,6 +8,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 public class CountryManager {
+
     private SessionFactory sessionFactory;
 
     private void setup() {
@@ -59,7 +60,7 @@ public class CountryManager {
         // code to remove
     }
 
-    public static void main(String[] args) {
+    public static void main() {
         // code to run the program
         CountryManager manager = new CountryManager();
         manager.setup();
