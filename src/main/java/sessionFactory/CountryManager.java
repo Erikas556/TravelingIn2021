@@ -21,24 +21,21 @@ public class CountryManager {
         } catch (Exception ex) {
             StandardServiceRegistryBuilder.destroy(registry);
         }
-
     }
 
     private void exit() {
+        sessionFactory.close();
         // code to close Hibernate Session factory
     }
 
     private void create() {
         // code to save
-
     }
 
     private void read() {
         // code to get
         Session session = sessionFactory.openSession();
-
         try {
-
             int ID = 1;
             CountryInfo countryInfo = session.get(CountryInfo.class, ID);
 
