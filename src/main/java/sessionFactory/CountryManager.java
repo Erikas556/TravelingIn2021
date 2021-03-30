@@ -36,7 +36,7 @@ public class CountryManager {
         // code to get
         Session session = sessionFactory.openSession();
         try {
-            int ID = 1;
+            int ID = 20;
             CountryInfo countryInfo = session.get(CountryInfo.class, ID);
 
             System.out.println("Country Name: " + countryInfo.getCountryName());
