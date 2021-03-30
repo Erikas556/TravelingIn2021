@@ -46,6 +46,7 @@ public class CountryManager {
             System.out.println("Vaccine Requirement: " + countryInfo.isVaccineRequirement());
             System.out.println("Test Requirement: " + countryInfo.isTestRequirement());
             System.out.println("Test Validation Time By hours: " + countryInfo.getTestValidationTimeByHours());
+            System.out.println("Is Foreigner Allowed To Enter The Country?: " + countryInfo.isForeignerAllowedToEnter());
 
             session.close();
         } catch (Exception E) {
