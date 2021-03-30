@@ -1,26 +1,29 @@
-package entity;
+package sessionFactory;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "countryInfo")
-public class CountryInfo {
+@Table(name = "countries")
+public class Countries {
 
-    private int id;
+    private long id;
     private String countryName;
-    private boolean vaccineRequirement;
-    private boolean testRequirement;
+    private String vaccineRequirement;
+    private String testRequirement;
     private int testValidationTimeByHours;
-    private boolean isForeigner;
+    private String isForeigner;
+
+    public Countries() {
+    }
 
     @Id
-    @Column(name = "countryInfo_id")
+    @Column(name = "country_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -32,19 +35,19 @@ public class CountryInfo {
         this.countryName = countryName;
     }
 
-    public boolean isVaccineRequirement() {
+    public String getVaccineRequirement() {
         return vaccineRequirement;
     }
 
-    public void setVaccineRequirement(boolean vaccineRequirement) {
+    public void setVaccineRequirement(String vaccineRequirement) {
         this.vaccineRequirement = vaccineRequirement;
     }
 
-    public boolean isTestRequirement() {
+    public String getTestRequirement() {
         return testRequirement;
     }
 
-    public void setTestRequirement(boolean testRequirement) {
+    public void setTestRequirement(String testRequirement) {
         this.testRequirement = testRequirement;
     }
 
@@ -56,11 +59,11 @@ public class CountryInfo {
         this.testValidationTimeByHours = testValidationTimeByHours;
     }
 
-    public boolean isForeigner() {
+    public String getForeigner() {
         return isForeigner;
     }
 
-    public void setForeigner(boolean foreigner) {
+    public void setForeigner(String foreigner) {
         isForeigner = foreigner;
     }
 }

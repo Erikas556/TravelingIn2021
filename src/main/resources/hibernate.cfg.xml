@@ -1,15 +1,17 @@
-<?xml version = "1.0" encoding = "utf-8"?>
-<!DOCTYPE hibernate-configuration SYSTEM
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/users?serverTimezone=UTC</property>
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/travelingin2021</property>
         <property name="connection.username">root</property>
-        <property name="connection.password">123456</property>
+        <property name="connection.password">PlsD@ntHackM3</property>
         <property name="show_sql">true</property>
-        <property name="hbm2ddl.auto">create-drop</property>
-        <mapping class="src/main/java/entity/CountryInfo.java" />
+
+        <mapping class="sessionFactory.Countries" />
+
     </session-factory>
 </hibernate-configuration>
