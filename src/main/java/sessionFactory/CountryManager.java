@@ -106,7 +106,6 @@ public class CountryManager {
         CountryManager manager = new CountryManager();
 
         manager.setup();
-        manager.read(4);
 
         manager.exit();
     }
