@@ -17,9 +17,19 @@ public class CountryInfo {
     private int testValidationTimeByHours;
     private boolean foreignerAllowedToEnter;
 
+//    public CountryInfo(int id, String countryName, boolean vaccineRequirement, boolean testRequirement, int testValidationTimeByHours, boolean foreignerAllowedToEnter) {
+//        this.id = id;
+//        this.countryName = countryName;
+//        this.vaccineRequirement = vaccineRequirement;
+//        this.testRequirement = testRequirement;
+//        this.testValidationTimeByHours = testValidationTimeByHours;
+//        this.foreignerAllowedToEnter = foreignerAllowedToEnter;
+//    }
+
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     public int getId() {
         return id;
     }
