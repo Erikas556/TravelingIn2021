@@ -7,10 +7,12 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import java.util.List;
+
 public class CountryManager {
     private SessionFactory sessionFactory;
 
-    private void setup() {
+    public void setup() {
         // code to load Hibernate Session factory
 
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
@@ -23,7 +25,7 @@ public class CountryManager {
         }
     }
 
-    private void exit() {
+    public void exit() {
         sessionFactory.close();
         // code to close Hibernate Session factory
     }
@@ -32,24 +34,24 @@ public class CountryManager {
         // code to save
     }
 
-    private void read() {
-        // code to get
+    public void read(int id) {
+        // code to get a specific row from table
         Session session = sessionFactory.openSession();
         try {
-            int ID = 20;
-            CountryInfo countryInfo = session.get(CountryInfo.class, ID);
+            CountryInfo countryInfo = session.get(CountryInfo.class,id);
 
-            System.out.println("Country Name: " + countryInfo.getCountryName());
+            System.out.println("Country Name : " + countryInfo.getCountryName());
             System.out.println("Vaccine Requirement: " + countryInfo.isVaccineRequirement());
-            System.out.println("Test Requirement: " + countryInfo.isTestRequirement());
-            System.out.println("Test Validation Time By hours: " + countryInfo.getTestValidationTimeByHours());
-            System.out.println("Is Foreigner Allowed To Enter The Country?: " + countryInfo.isForeignerAllowedToEnter());
+            System.out.println("Test Requirement : " + countryInfo.isTestRequirement());
+            System.out.println("Test Validation Time By hours : " + countryInfo.getTestValidationTimeByHours());
+            System.out.println("Are foreigners allowed to the country : " + countryInfo.isForeignerAllowedToEnter());
 
             session.close();
         } catch (Exception E) {
             E.printStackTrace();
         }
     }
+
 
     private void update() {
         // code to modify
@@ -59,14 +61,21 @@ public class CountryManager {
         // code to remove
     }
 
+    public List<String> printCountryNames() {
+
+        CountryManager manager = new CountryManager();
+        Session session = sessionFactory.openSession();
+
+        return session.createQuery("SELECT countryName FROM CountryInfo").getResultList();
+    }
+
     public static void main(String[] args) {
         // code to run the program
         CountryManager manager = new CountryManager();
         manager.setup();
-//        manager.create();
-        manager.read();
-//        manager.update();
-//        manager.delete();
-//        manager.exit();
+        manager.read(15);
+        manager.exit();
+
+
     }
 }
