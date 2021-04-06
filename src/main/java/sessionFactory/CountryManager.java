@@ -2,33 +2,12 @@ package sessionFactory;
 
 import entity.CountryInfo;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
+import util.HibernateUtil;
 
 import java.util.List;
 
 public class CountryManager {
-    private SessionFactory sessionFactory;
-
-    public void setup() {
-        // code to load Hibernate Session factory
-
-        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-                .configure() // configures settings from hibernate.cfg.xml
-                .build();
-        try {
-            sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-        } catch (Exception ex) {
-            StandardServiceRegistryBuilder.destroy(registry);
-        }
-    }
-
-    public void exit() {
-        sessionFactory.close();
-        // code to close Hibernate Session factory
-    }
 
     private void create() {
         // code to save
@@ -36,9 +15,9 @@ public class CountryManager {
 
     public void read(int id) {
         // code to get a specific row from table
-        Session session = sessionFactory.openSession();
+        Session session = HibernateUtil.setup().openSession();
         try {
-            CountryInfo countryInfo = session.get(CountryInfo.class,id);
+            CountryInfo countryInfo = session.get(CountryInfo.class, id);
 
             System.out.println("Country Name : " + countryInfo.getCountryName());
             System.out.println("Vaccine Requirement: " + countryInfo.isVaccineRequirement());
@@ -64,18 +43,17 @@ public class CountryManager {
     public List<String> printCountryNames() {
 
         CountryManager manager = new CountryManager();
-        Session session = sessionFactory.openSession();
+        Session session = HibernateUtil.setup().openSession();
 
         return session.createQuery("SELECT countryName FROM CountryInfo").getResultList();
     }
 
     public static void main(String[] args) {
         // code to run the program
+        HibernateUtil.setup();
         CountryManager manager = new CountryManager();
-        manager.setup();
         manager.read(15);
-        manager.exit();
-
+        HibernateUtil.exit();
 
     }
 }

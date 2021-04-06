@@ -67,4 +67,9 @@ public class CountryInfo {
     public void setForeignerAllowedToEnter(boolean foreignerAllowedToEnter) {
         this.foreignerAllowedToEnter = foreignerAllowedToEnter;
     }
+
+    @Override
+    public String toString() {
+        return getId() + "  " + getCountryName();
+    }
 }

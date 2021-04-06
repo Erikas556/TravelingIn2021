@@ -1,8 +1,12 @@
 package logic;
 
+import dao.CountryInfoDao;
+import entity.CountryInfo;
 import org.hibernate.SessionFactory;
 import sessionFactory.CountryManager;
+import util.HibernateUtil;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Logika {
@@ -25,9 +29,13 @@ public class Logika {
 
         switch (answer.toUpperCase()) {
             case "A": {
-                manager.setup();
-                System.out.println(manager.printCountryNames());
-                manager.exit();
+                HibernateUtil.setup();
+                CountryInfoDao countryInfoDao = new CountryInfoDao();
+                List<CountryInfo> countries = CountryInfoDao.getCountriesList();
+                for (CountryInfo p : countries) {
+                    System.out.println(p.toString());
+                }
+                HibernateUtil.exit();
                 printMenu();
             }
             break;
@@ -35,9 +43,9 @@ public class Logika {
             case "B": {
                 System.out.println("Enter a country name : ");
                 String input = scan.nextLine();
-                manager.setup();
-             //   manager.read(1);
-                manager.exit();
+                HibernateUtil.setup();
+                //   manager.read(1);
+                HibernateUtil.exit();
                 printSecondMenu();
             }
             break;
@@ -72,9 +80,9 @@ public class Logika {
             case "A": {
                 System.out.println("Enter a country name : ");
                 String input2 = scan.nextLine();
-                manager.setup();
-              //  manager.read(2);
-                manager.exit();
+                HibernateUtil.setup();
+                //  manager.read(2);
+                HibernateUtil.exit();
                 printSecondMenu();
             }
             break;
