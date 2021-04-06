@@ -1,15 +1,21 @@
 import dao.CountryDao;
 import entity.CountryInfo;
+import util.HibernateUtil;
+
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("===== Hello Traveling In 2021 =====");
 
         CountryDao countryDao = new CountryDao();
-        CountryInfo countryInfo = new CountryInfo();
-        countryDao.getCountriesInfo();
+        List<CountryInfo> countries = countryDao.getCountriesList();
+        for (CountryInfo p : countries) {
+            System.out.println(p.toString());
+        }
+
+        HibernateUtil.shutdown();
 
     }
 }

@@ -10,31 +10,38 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "countryInfo")
 public class CountryInfo {
-    private int id;
+    private Long id;
     private String countryName;
     private boolean vaccineRequirement;
     private boolean testRequirement;
     private int testValidationTimeByHours;
     private boolean foreignerAllowedToEnter;
 
-//    public CountryInfo(int id, String countryName, boolean vaccineRequirement, boolean testRequirement, int testValidationTimeByHours, boolean foreignerAllowedToEnter) {
-//        this.id = id;
-//        this.countryName = countryName;
-//        this.vaccineRequirement = vaccineRequirement;
-//        this.testRequirement = testRequirement;
-//        this.testValidationTimeByHours = testValidationTimeByHours;
-//        this.foreignerAllowedToEnter = foreignerAllowedToEnter;
-//    }
+    public CountryInfo() {
+    }
+
+    public CountryInfo(String CountryName) {
+        this.countryName = CountryName;
+    }
+
+    public CountryInfo(Long id, String countryName, boolean vaccineRequirement, boolean testRequirement, int testValidationTimeByHours, boolean foreignerAllowedToEnter) {
+        this.id = id;
+        this.countryName = countryName;
+        this.vaccineRequirement = vaccineRequirement;
+        this.testRequirement = testRequirement;
+        this.testValidationTimeByHours = testValidationTimeByHours;
+        this.foreignerAllowedToEnter = foreignerAllowedToEnter;
+    }
 
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -76,5 +83,10 @@ public class CountryInfo {
 
     public void setForeignerAllowedToEnter(boolean foreignerAllowedToEnter) {
         this.foreignerAllowedToEnter = foreignerAllowedToEnter;
+    }
+
+    @Override
+    public String toString() {
+        return getCountryName();
     }
 }

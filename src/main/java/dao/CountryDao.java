@@ -8,11 +8,11 @@ import java.util.List;
 
 public class CountryDao {
 
-    public List<CountryInfo> getCountriesInfo() {
+    public List<CountryInfo> getCountriesList() {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
-            List<CountryInfo> Countries = session.createQuery("FROM CountryInfo", CountryInfo.class).getResultList();
-            return Countries;
+            List<CountryInfo> countries = session.createQuery("FROM CountryInfo", CountryInfo.class).list();
+            return countries;
         } catch (Exception e) {
             e.printStackTrace();
             return null;

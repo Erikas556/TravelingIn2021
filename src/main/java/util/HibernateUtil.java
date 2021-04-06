@@ -17,12 +17,6 @@ public class HibernateUtil {
 
     public static SessionFactory getSessionFactory() {
 
-//        final SessionFactory sessionFactory = new Configuration();
-//                .configure("hibernate.cfg.xml")
-//                .addAnnotatedClass(CountryInfo.class)
-//                .buildSessionFactory();
-//        return sessionFactory;
-//    }
 
 
 //        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
@@ -47,8 +41,8 @@ public class HibernateUtil {
                 settings.put(Environment.USER, "root");
                 settings.put(Environment.PASS, "123456");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
-                settings.put(Environment.SHOW_SQL, "true");
-                settings.put(Environment.FORMAT_SQL, "true");
+                settings.put(Environment.SHOW_SQL, "false");
+                settings.put(Environment.FORMAT_SQL, "false");
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(CountryInfo.class);
@@ -60,9 +54,7 @@ public class HibernateUtil {
             }
         }
         return sessionFactory;
-
     }
-
 
     public static void shutdown() {
         // Close caches and connection pools
