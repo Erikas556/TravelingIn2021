@@ -38,7 +38,7 @@ public class CountryManager {
         // code to get a specific row from table
         Session session = sessionFactory.openSession();
         try {
-            CountryInfo countryInfo = session.get(CountryInfo.class,id);
+            CountryInfo countryInfo = session.get(CountryInfo.class, id);
 
             System.out.println("Country Name : " + countryInfo.getCountryName());
             System.out.println("Vaccine Requirement: " + countryInfo.isVaccineRequirement());
@@ -63,19 +63,27 @@ public class CountryManager {
 
     public List<String> printCountryNames() {
 
-        CountryManager manager = new CountryManager();
         Session session = sessionFactory.openSession();
 
         return session.createQuery("SELECT countryName FROM CountryInfo").getResultList();
     }
 
+    public Object readCountryInfo(String s) {
+
+        Session session = sessionFactory.openSession();
+
+        return session.createQuery("FROM CountryInfo WHERE countryName='" + s + "'").getSingleResult();
+    }
+
+
     public static void main(String[] args) {
         // code to run the program
         CountryManager manager = new CountryManager();
         manager.setup();
-        manager.read(15);
-        manager.exit();
 
+        System.out.println(manager.readCountryInfo("Lithuania").toString());
+        manager.exit();
 
     }
 }
+

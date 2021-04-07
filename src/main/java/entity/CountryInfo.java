@@ -67,4 +67,16 @@ public class CountryInfo {
     public void setForeignerAllowedToEnter(boolean foreignerAllowedToEnter) {
         this.foreignerAllowedToEnter = foreignerAllowedToEnter;
     }
+
+    @Override
+    public String toString() {
+        return "COUNTRY INFO :" +
+                "\n" +
+                " \n Name of Country : " + countryName +
+                ",\n Vaccine Requirement : " + vaccineRequirement +
+                ",\n Test Requirement : " + testRequirement +
+                ",\n Test Validation Time by hours :" + testValidationTimeByHours +
+                ",\n Are foreigners allowed to the country : " + foreignerAllowedToEnter
+                ;
+    }
 }

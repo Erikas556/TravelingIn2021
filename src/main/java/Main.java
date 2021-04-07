@@ -1,5 +1,4 @@
 import logic.Logika;
-import sessionFactory.CountryManager;
 
 public class Main extends Logika {
 
