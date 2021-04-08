@@ -2,15 +2,14 @@ package sessionFactory;
 
 import entity.CountryInfo;
 import org.hibernate.Session;
-
 import util.HibernateUtil;
-
 import java.util.List;
 
 public class CountryManager {
 
     private void create() {
-        // code to save
+         // code to save
+
     }
 
     public void read(int id) {
@@ -40,13 +39,13 @@ public class CountryManager {
         // code to remove
     }
 
-    public List<String> printCountryNames() {
-
-        CountryManager manager = new CountryManager();
-        Session session = HibernateUtil.setup().openSession();
-
-        return session.createQuery("SELECT countryName FROM CountryInfo").getResultList();
-    }
+//    public List<String> printCountryNames() {
+//
+//        CountryManager manager = new CountryManager();
+//        Session session = HibernateUtil.setup().openSession();
+//
+//        return session.createQuery("SELECT countryName FROM CountryInfo").getResultList();
+//    }
 
     public static void main(String[] args) {
         // code to run the program

@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "countryInfo")
 public class CountryInfo {
-    private int id;
+    private int countryID;
     private String countryName;
     private boolean vaccineRequirement;
     private boolean testRequirement;
@@ -18,14 +18,14 @@ public class CountryInfo {
     private boolean foreignerAllowedToEnter;
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "countryId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int getId() {
-        return id;
+    public int getCountryID() {
+        return countryID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCountryID(int countryID) {
+        this.countryID = countryID;
     }
 
     public String getCountryName() {
@@ -70,6 +70,6 @@ public class CountryInfo {
 
     @Override
     public String toString() {
-        return getId() + "  " + getCountryName();
+        return getCountryID() + "  " + getCountryName();
     }
 }

@@ -3,7 +3,7 @@ package logic;
 import dao.CountryInfoDao;
 import entity.CountryInfo;
 import org.hibernate.SessionFactory;
-import sessionFactory.CountryManager;
+import sessionFactory.UserManager;
 import util.HibernateUtil;
 
 import java.util.List;
@@ -13,7 +13,8 @@ public class Logika {
 
     private SessionFactory sessionFactory1;
     Scanner scan = new Scanner(System.in);
-    CountryManager manager = new CountryManager();
+    UserManager userManager = new UserManager();
+
 
     public void printMenu() {
 
@@ -21,9 +22,10 @@ public class Logika {
         System.out.println("MENU");
         System.out.println("Select action with Letter :");
 
-        System.out.println("A - a list of european countries .");
-        System.out.println("B - Input a country which you would like to visit.");
-        System.out.println("C - Exit.");
+        System.out.println("A - List EU countries");
+        System.out.println("B - Register Username if not registered");
+        System.out.println("C - Type Username if it is registered");
+        System.out.println("X - Exit.");
 
         String answer = scan.nextLine();
 
@@ -31,7 +33,7 @@ public class Logika {
             case "A": {
                 HibernateUtil.setup();
                 CountryInfoDao countryInfoDao = new CountryInfoDao();
-                List<CountryInfo> countries = CountryInfoDao.getCountriesList();
+                List<CountryInfo> countries = countryInfoDao.getCountriesList();
                 for (CountryInfo p : countries) {
                     System.out.println(p.toString());
                 }
@@ -41,17 +43,39 @@ public class Logika {
             break;
 
             case "B": {
-                System.out.println("Enter a country name : ");
-                String input = scan.nextLine();
+
+                System.out.println("Please enter new Username");
+                String userName = scan.nextLine();
+
+                System.out.println("Please enter email address");
+                String email = scan.nextLine();
+
+                System.out.println("Please enter the number of the country you are citizen");
+                Integer nationality = scan.nextInt();
+
                 HibernateUtil.setup();
-                //   manager.read(1);
+                userManager.createUser(userName, email, nationality);
                 HibernateUtil.exit();
+
+                System.out.println("User successfully created !");
+
                 printSecondMenu();
             }
             break;
 
             case "C": {
-                System.exit(0);
+                System.out.println("Please type username");
+                String sc = scan.nextLine();
+                HibernateUtil.setup();
+                if (!userManager.printUsernames().contains(sc)) {
+                    System.out.println("User Does not exist");
+                    System.out.println("Check your spelling and try again");
+                    printMenu();
+                }
+                HibernateUtil.setup();
+                System.out.println(userManager.readUsername(sc));
+                HibernateUtil.exit();
+
             }
             default: {
                 System.out.println("No such command !");

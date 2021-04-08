@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CountryInfoDao {
 
-    public static List<CountryInfo> getCountriesList() {
+    public List<CountryInfo> getCountriesList() {
         try {
             Session session = HibernateUtil.setup().openSession();
             List<CountryInfo> countries = session.createQuery("FROM CountryInfo", CountryInfo.class).getResultList();
