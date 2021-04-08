@@ -52,7 +52,6 @@ public class CountryManager {
         }
     }
 
-
     private void update() {
         // code to modify
     }

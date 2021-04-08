@@ -79,7 +79,6 @@ public class Logika {
 
     public void printSecondMenu() {
 
-
         System.out.println("\nMENU");
         System.out.println("Select action with Letter :");
 
@@ -108,7 +107,9 @@ public class Logika {
             }
             break;
             case "B": {
-                System.out.println("Later to be added...");
+                System.out.println("Enter your email address below : ");
+                SendEmail.sendEmail(scan.nextLine());
+                printMenu();
             }
             break;
             case "C": {
