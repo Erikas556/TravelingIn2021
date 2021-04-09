@@ -50,4 +50,9 @@ public class Users {
     public void setNationality(int nationality) {
         this.nationality = nationality;
     }
+
+    @Override
+    public String toString() {
+        return getUserName() + "  " + getEmail() + "  " + getNationality();
+    }
 }

@@ -7,16 +7,11 @@ import java.util.List;
 
 public class CountryManager {
 
-    private void create() {
-         // code to save
-
-    }
-
-    public void read(int id) {
+     public void read(Integer countryID) {
         // code to get a specific row from table
         Session session = HibernateUtil.setup().openSession();
         try {
-            CountryInfo countryInfo = session.get(CountryInfo.class, id);
+            CountryInfo countryInfo = session.get(CountryInfo.class, countryID);
 
             System.out.println("Country Name : " + countryInfo.getCountryName());
             System.out.println("Vaccine Requirement: " + countryInfo.isVaccineRequirement());
@@ -30,6 +25,11 @@ public class CountryManager {
         }
     }
 
+    public List<String> printCountriesName() {
+        Session session = HibernateUtil.setup().openSession();
+        return session.createQuery("SELECT countryID from CountryInfo ").getResultList();
+    }
+
 
     private void update() {
         // code to modify
@@ -39,20 +39,12 @@ public class CountryManager {
         // code to remove
     }
 
-//    public List<String> printCountryNames() {
-//
-//        CountryManager manager = new CountryManager();
-//        Session session = HibernateUtil.setup().openSession();
-//
-//        return session.createQuery("SELECT countryName FROM CountryInfo").getResultList();
-//    }
-
     public static void main(String[] args) {
         // code to run the program
-        HibernateUtil.setup();
-        CountryManager manager = new CountryManager();
-        manager.read(15);
-        HibernateUtil.exit();
+//        HibernateUtil.setup();
+//        CountryManager manager = new CountryManager();
+//
+//        HibernateUtil.exit();
 
     }
 }

@@ -41,14 +41,13 @@ public class UserManager {
 
     public List<String> printUsernames() {
         Session session = HibernateUtil.setup().openSession();
-        return session.createQuery("SELECT username FROM users ").getResultList();
+        return session.createQuery("SELECT userName from Users ").getResultList();
     }
 
     public Object readUsername(String sc){
         Session session = HibernateUtil.setup().openSession();
-        return session.createQuery("FROM users WHERE username='" + sc + "'").getSingleResult();
+        return session.createQuery("FROM Users WHERE userName ='" + sc + "'").getSingleResult();
     }
-
 
     public static void main(String[] args) {
         // code to run the program
