@@ -1,12 +1,13 @@
 package sessionFactory;
 
-import entity.CountryInfo;
 import entity.Users;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
+import java.util.List;
 
 public class UserManager {
 
@@ -42,6 +43,12 @@ public class UserManager {
         } catch (Exception E) {
             E.printStackTrace();
         }
+    }
+
+    public List<String> listUsers () {
+
+        Session session = sessionFactory.openSession();
+        return session.createQuery("SELECT userName FROM Users").getResultList();
     }
 
     public void addUser(String userName, String email) {
