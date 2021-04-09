@@ -11,7 +11,6 @@ import java.util.Scanner;
 
 public class Logika {
 
-    private SessionFactory sessionFactory1;
     Scanner scan = new Scanner(System.in);
     UserManager userManager = new UserManager();
 
@@ -59,7 +58,7 @@ public class Logika {
 
                 System.out.println("User successfully created !");
 
-                printSecondMenu();
+                printMenu();
             }
             break;
 

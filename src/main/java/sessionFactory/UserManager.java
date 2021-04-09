@@ -18,9 +18,8 @@ public class UserManager {
         user.setNationality(nationality);
 
         Session session = HibernateUtil.setup().openSession();
-
+        session.beginTransaction();
         session.save(user);
-
         session.getTransaction().commit();
         session.close();
     }
