@@ -4,7 +4,7 @@ public class Main extends Logika {
 
     public static void main(String[] args) {
 
-        System.out.println("Hello Traveling In 2021");
+        System.out.println("Hello Traveling In 2021 By Vilius and Erikas !");
          new Logika();
     }
 }
