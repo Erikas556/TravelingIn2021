@@ -11,7 +11,6 @@ import java.util.Scanner;
 
 public class Logika {
 
-    Scanner scan = new Scanner(System.in);
     UserManager userManager = new UserManager();
     CountryManager countryManager = new CountryManager();
 
@@ -27,7 +26,8 @@ public class Logika {
         System.out.println("C - Type Username if it is registered");
         System.out.println("\nX - Exit.");
 
-        String answer = scan.nextLine();
+        Scanner scan1 = new Scanner(System.in);
+        String answer = scan1.nextLine();
 
         switch (answer.toUpperCase()) {
             case "A":
@@ -39,19 +39,18 @@ public class Logika {
                 }
                 HibernateUtil.exit();
                 printMenu();
-
                 break;
 
             case "B":
 
                 System.out.println("Please enter new Username");
-                String userName = scan.nextLine();
+                String userName = scan1.nextLine();
 
                 System.out.println("Please enter email address");
-                String email = scan.nextLine();
+                String email = scan1.nextLine();
 
                 System.out.println("Please enter the number of the country you are citizen");
-                Integer nationality = scan.nextInt();
+                Integer nationality = scan1.nextInt();
 
                 HibernateUtil.setup();
                 userManager.createUser(userName, email, nationality);
@@ -59,12 +58,11 @@ public class Logika {
 
                 System.out.println("User successfully created !");
                 printMenu();
-
                 break;
 
             case "C":
                 System.out.println("Please type username");
-                String sc = scan.nextLine();
+                String sc = scan1.nextLine();
                 HibernateUtil.setup();
 
                 if (!userManager.printUsernames().contains(sc)) {
@@ -76,6 +74,9 @@ public class Logika {
                 HibernateUtil.exit();
                 printSecondMenu();
                 break;
+
+            case "X":
+                System.exit(0);
 
             default:
                 System.out.println("No such command !");
@@ -95,9 +96,10 @@ public class Logika {
         System.out.println("A - List EU Countries");
         System.out.println("B - Put the country name to receive information");
         System.out.println("C - Back to main menu.");
-        System.out.println("\nX - exit program.");
 
-        String input = scan.nextLine();
+
+        Scanner scan2 = new Scanner(System.in);
+        String input = scan2.nextLine();
 
         switch (input.toUpperCase()) {
 
@@ -114,7 +116,7 @@ public class Logika {
 
             case "B":
                 System.out.println("Enter a country name number: ");
-                Integer br = scan.nextInt();
+                Integer br = scan2.nextInt();
                 HibernateUtil.setup();
                 if (countryManager.printCountriesName().contains(br)) {
                     HibernateUtil.setup();
@@ -130,10 +132,6 @@ public class Logika {
             case "C":
                 printMenu();
                 break;
-
-            case "X":
-                System.exit(0);
-
         }
     }
 }
