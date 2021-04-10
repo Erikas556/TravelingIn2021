@@ -1,7 +1,5 @@
 package logic;
 
-import com.sun.mail.imap.IMAPNestedMessage;
-import org.hibernate.SessionFactory;
 import sessionFactory.CountryManager;
 import sessionFactory.UserManager;
 
@@ -72,7 +70,6 @@ public class Logika {
 
             }
             case "D": {
-                System.out.println("List all registered users.");
                 UserManager user = new UserManager();
                 user.setup();
                 System.out.println("   USERS   ");

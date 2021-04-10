@@ -66,11 +66,4 @@ public class UserManager {
         session.getTransaction().commit();
         session.close();
     }
-
-    public static void main(String[] args) {
-        UserManager manager = new UserManager();
-        manager.setup();
-        manager.addUser("Klaipeckas", "klaipeckiukas556@gmail.com");
-        manager.exit();
-    }
 }

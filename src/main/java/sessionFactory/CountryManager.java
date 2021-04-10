@@ -117,14 +117,5 @@ public class CountryManager {
 
         return session.createQuery("FROM CountryInfo WHERE countryName='" + s + "'").getSingleResult();
     }
-
-
-    public static void main(String[] args) {
-
-        CountryManager manager = new CountryManager();
-        manager.setup();
-        manager.exit();
-
-    }
 }
 
