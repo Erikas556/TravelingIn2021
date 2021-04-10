@@ -95,7 +95,8 @@ public class Logika {
 
         System.out.println("A - List EU Countries");
         System.out.println("B - Put the country name to receive information");
-        System.out.println("C - Back to main menu.");
+        System.out.println("C - Do you want to delete you user?");
+        System.out.println("D - Back to main menu.");
 
 
         Scanner scan2 = new Scanner(System.in);
@@ -130,6 +131,11 @@ public class Logika {
                 break;
 
             case "C":
+
+
+                break;
+
+            case "D":
                 printMenu();
                 break;
         }
