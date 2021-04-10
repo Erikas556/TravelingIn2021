@@ -8,19 +8,22 @@ import java.util.Scanner;
 
 public class Logika {
 
-    private SessionFactory sessionFactory1;
-    Scanner scan = new Scanner(System.in);
-    CountryManager manager = new CountryManager();
+    public Logika() {
+        printMenu();
+    }
+
+    private Scanner scan = new Scanner(System.in);
+    private CountryManager manager = new CountryManager();
 
     public void printMenu() {
 
         System.out.println("\nMENU");
         System.out.println("Select action with Letter :");
-
         System.out.println("\nA - a list of european countries .");
         System.out.println("B - Input a country which you would like to visit.");
         System.out.println("C - Register user to DataBase.");
         System.out.println("D - List of existing users.");
+        System.out.println("E - Enter Developer Menu.");
         System.out.println("F - Exit program.");
 
         String answer = scan.nextLine();
@@ -77,6 +80,10 @@ public class Logika {
                 printMenu();
             }
             break;
+            case "E": {
+                printDeveloperMenu();
+            }
+            break;
             case "F": {
                 System.exit(0);
             }
@@ -94,11 +101,9 @@ public class Logika {
 
         System.out.println("\nMENU");
         System.out.println("Select action with Letter :");
-
         System.out.println("\nA - Try another country ?");
-        System.out.println("B - Receive advice and some facts how to better defend your self during the pandemic via Email letter.");
+        System.out.println("B - Receive advice and tips on how to better defend your self during the pandemic via Email letter.");
         System.out.println("C - Back to main menu.");
-        System.out.println("D - exit program.");
 
         String input = scan.nextLine();
 
@@ -129,9 +134,22 @@ public class Logika {
                 printMenu();
             }
             break;
-            case "D": {
-                System.exit(0);
+            default: {
+                System.out.println("No such command !");
+                System.out.println("Check your text for possible mistakes !");
+                printSecondMenu();
             }
+            break;
         }
+    }
+
+    public void printDeveloperMenu() {
+
+        System.out.println("\n DEVELOPER MENU");
+        System.out.println("Select action with Letter :");
+        System.out.println("\nA - Read a row from table.");
+        System.out.println("B - Modify a row from table.");
+        System.out.println("C - Delete a row from table.");
+
     }
 }

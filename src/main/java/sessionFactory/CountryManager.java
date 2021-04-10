@@ -11,6 +11,8 @@ import java.util.List;
 
 public class CountryManager {
     private SessionFactory sessionFactory;
+    private CountryInfo countries = new CountryInfo();
+
 
     public void setup() {
         // code to load Hibernate Session factory
@@ -31,7 +33,7 @@ public class CountryManager {
     }
 
     private void create() {
-        // code to save
+        // method to create a new record in table
     }
 
     public void read(int id) {
@@ -52,12 +54,39 @@ public class CountryManager {
         }
     }
 
-    private void update() {
-        // code to modify
+    private void update(int id, String countryName, boolean vacReq, boolean testReq, int validationTime, boolean foreigner) {
+        // method to modify a line from a table by id
+
+        countries.setId(id);
+        countries.setCountryName(countryName);
+        countries.setVaccineRequirement(vacReq);
+        countries.setTestRequirement(testReq);
+        countries.setTestValidationTimeByHours(validationTime);
+        countries.setForeignerAllowedToEnter(foreigner);
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        session.update(countries);
+
+        session.getTransaction().commit();
+        session.close();
+
     }
 
-    private void delete() {
-        // code to remove
+    public void delete(int id) {
+        // method to delete a line form a table by id
+
+        countries.setId(id);
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        session.delete(countries);
+
+        session.getTransaction().commit();
+        session.close();
+
     }
 
     public List<String> printCountryNames() {
@@ -76,11 +105,9 @@ public class CountryManager {
 
 
     public static void main(String[] args) {
-        // code to run the program
+
         CountryManager manager = new CountryManager();
         manager.setup();
-
-        System.out.println(manager.readCountryInfo("Lithuania").toString());
         manager.exit();
 
     }

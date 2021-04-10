@@ -6,8 +6,7 @@ public class Main extends Logika {
 
         System.out.println("Hello Traveling In 2021");
 
-        Logika logic = new Logika();
-        logic.printMenu();
+         new Logika();
 
     }
 }

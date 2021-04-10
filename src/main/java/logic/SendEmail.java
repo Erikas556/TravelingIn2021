@@ -25,7 +25,7 @@ public class SendEmail {
                 return new PasswordAuthentication(username, password);
             }
         });
-        //Start our mail message
+
         MimeMessage msg = new MimeMessage(session);
         try {
             msg.setFrom(new InternetAddress(fromEmail));
@@ -45,7 +45,7 @@ public class SendEmail {
                     "Kaukės jas dėvintiems asmenims gali padėti išvengti viruso perdavimo kitiems asmenims. Kaukės neapsaugo nuo COVID-19, dėvint kaukes būtina laikytis fizinio atstumo ir plauti rankas. Vadovaukitės vietos sveikatos institucijos pateiktomis rekomendacijomis.");
 
             Transport.send(msg);
-            System.out.println("Message Sent !");
+            System.out.println("\nMessage Sent !");
         } catch (MessagingException e) {
             e.printStackTrace();
 
