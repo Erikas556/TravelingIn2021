@@ -1,5 +1,6 @@
 package logic;
 
+import com.sun.mail.imap.IMAPNestedMessage;
 import org.hibernate.SessionFactory;
 import sessionFactory.CountryManager;
 import sessionFactory.UserManager;
@@ -124,6 +125,7 @@ public class Logika {
                 printSecondMenu();
             }
             break;
+
             case "B": {
                 System.out.println("Enter your email address below : ");
                 SendEmail.sendEmail(scan.nextLine());
@@ -134,6 +136,7 @@ public class Logika {
                 printMenu();
             }
             break;
+
             default: {
                 System.out.println("No such command !");
                 System.out.println("Check your text for possible mistakes !");
@@ -145,12 +148,65 @@ public class Logika {
 
     public void printDeveloperMenu() {
 
+        Scanner sk = new Scanner(System.in);
         System.out.println("\n DEVELOPER MENU");
         System.out.println("Select action with Letter :");
         System.out.println("\nA - Read a row from table.");
-        System.out.println("\nB - Create row in table.");
-        System.out.println("C - Modify a row from table.");
-        System.out.println("D - Delete a row from table.");
+        System.out.println("B - Add a country in table.");
+        //System.out.println("C - Modify a country from table.");
+        System.out.println("D - Delete a country from table.");
+        System.out.println("E - Back to main menu.");
 
+        String input = sk.nextLine();
+
+        switch (input.toUpperCase()) {
+
+            case "A": {
+                manager.setup();
+                System.out.println("Enter country ID which to read : ");
+                manager.read(sk.nextInt());
+                printDeveloperMenu();
+            }
+            break;
+
+            case "B": {
+                manager.setup();
+                System.out.println("Enter the needed info to create a new country in the given order :");
+                System.out.println("Country Name -> vaccineRequirement (boolean) -> testRequirement (boolean) -> testValidationTimeByHours(Integer) -> Are foreigners allowed(boolean).");
+                manager.create(sk.nextLine(), sk.nextBoolean(), sk.nextBoolean(), sk.nextInt(), sk.nextBoolean());
+                System.out.println("Country successfully added to database ! ");
+                printDeveloperMenu();
+            }
+            break;
+
+//            case "C": {
+//                manager.setup();
+//                System.out.println("Modify Country by given ID : ");
+//                System.out.println( "ID -> Country Name -> vaccineRequirement(boolean) -> testRequirement (boolean) -> testValidationTimeByHours(Integer) -> Are foreigners allowed(boolean).");
+//                manager.update(sk.nextInt(),sk.nextLine(),sk.nextBoolean(),sk.nextBoolean(),sk.nextInt(),sk.nextBoolean());
+//                System.out.println("Country successfully modified !");
+//                printDeveloperMenu();
+//            }
+            case "D": {
+                manager.setup();
+                System.out.println("Enter country ID to delete row : ");
+                manager.delete(sk.nextInt());
+                System.out.println("Country successfully deleted from database !");
+                printDeveloperMenu();
+            }
+            break;
+
+            case "E": {
+                printMenu();
+            }
+            break;
+
+            default: {
+                System.out.println("\nNo such command !");
+                System.out.println("Check your text for possible mistakes !");
+                printDeveloperMenu();
+            }
+            break;
+        }
     }
 }

@@ -32,8 +32,23 @@ public class CountryManager {
         // code to close Hibernate Session factory
     }
 
-    private void create() {
-        // method to create a new record in table
+    public void create(String countryName, boolean vaccineReq, boolean testReq, int validiationTime, boolean isForeigner) {
+        // method to add countries to database
+
+        countries.setCountryName(countryName);
+        countries.setVaccineRequirement(vaccineReq);
+        countries.setTestRequirement(testReq);
+        countries.setTestValidationTimeByHours(validiationTime);
+        countries.setForeignerAllowedToEnter(isForeigner);
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        session.save(countries);
+
+        session.getTransaction().commit();
+        session.close();
+
     }
 
     public void read(int id) {
@@ -54,10 +69,10 @@ public class CountryManager {
         }
     }
 
-    private void update(int id, String countryName, boolean vacReq, boolean testReq, int validationTime, boolean foreigner) {
+    public void update(int id, String countryName, boolean vacReq, boolean testReq, int validationTime, boolean foreigner) {
         // method to modify a line from a table by id
 
-        countries.setId(id);
+        countries.getId();
         countries.setCountryName(countryName);
         countries.setVaccineRequirement(vacReq);
         countries.setTestRequirement(testReq);
