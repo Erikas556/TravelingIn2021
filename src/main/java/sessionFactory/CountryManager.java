@@ -30,13 +30,13 @@ public class CountryManager {
 
     private void create(String countryName, String vaccineReq, String testReq, int validiationTime, String isForeigner) {
         // method to add countries to database
-        Countries country = new Countries();
+        CountryInfo country = new CountryInfo();
 
         country.setCountryName(countryName);
         country.setVaccineRequirement(vaccineReq);
         country.setTestRequirement(testReq);
         country.setTestValidationTimeByHours(validiationTime);
-        country.setForeigner(isForeigner);
+        country.setForeignerAllowedToEnter(isForeigner);
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -53,32 +53,32 @@ public class CountryManager {
         Session session = sessionFactory.openSession();
 
         long countryId = id;
-        Countries countries = session.get(Countries.class, countryId);
+        CountryInfo countryInfo = session.get(CountryInfo.class, countryId);
 
-        System.out.println("Name of Country : " + countries.getCountryName());
-        System.out.println("Vaccine required to enter country : " + countries.getVaccineRequirement());
-        System.out.println("COVID-19 Test required to enter country : " + countries.getTestRequirement());
-        System.out.println("Oldest time(hours) of COVID-19 test : " + countries.getTestValidationTimeByHours());
-        System.out.println("Allows foreigner : " + countries.getForeigner());
+        System.out.println("Name of Country : " + countryInfo.getCountryName());
+        System.out.println("Vaccine required to enter country : " + countryInfo.getVaccineRequirement());
+        System.out.println("COVID-19 Test required to enter country : " + countryInfo.getTestRequirement());
+        System.out.println("Oldest time(hours) of COVID-19 test : " + countryInfo.getTestValidationTimeByHours());
+        System.out.println("Allows foreigner : " + countryInfo.getForeignerAllowedToEnter());
 
         session.close();
     }
 
     private void update(long id, String countryName, String vacReq, String testReq, int validationTime, String foreigner) {
         // method to modify a line from a table by id
-        Countries countries = new Countries();
+        CountryInfo countryInfo = new CountryInfo();
 
-        countries.setId(id);
-        countries.setCountryName(countryName);
-        countries.setVaccineRequirement(vacReq);
-        countries.setTestRequirement(testReq);
-        countries.setTestValidationTimeByHours(validationTime);
-        countries.setForeigner(foreigner);
+        countryInfo.setId(id);
+        countryInfo.setCountryName(countryName);
+        countryInfo.setVaccineRequirement(vacReq);
+        countryInfo.setTestRequirement(testReq);
+        countryInfo.setTestValidationTimeByHours(validationTime);
+        countryInfo.setForeignerAllowedToEnter(foreigner);
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        session.update(countries);
+        session.update(countryInfo);
 
         session.getTransaction().commit();
         session.close();
@@ -87,14 +87,14 @@ public class CountryManager {
 
     private void delete(long id) {
         // method to delete a line form a table by id
-        Countries countries = new Countries();
+        CountryInfo countryInfo = new CountryInfo();
 
-        countries.setId(id);
+        countryInfo.setId(id);
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        session.delete(countries);
+        session.delete(countryInfo);
 
         session.getTransaction().commit();
         session.close();
@@ -106,7 +106,7 @@ public class CountryManager {
         CountryManager manager = new CountryManager();
 
         manager.setup();
-
+        manager.delete(61);
         manager.exit();
     }
 }

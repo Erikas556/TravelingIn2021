@@ -3,21 +3,21 @@ package sessionFactory;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "countries")
-public class Countries {
+@Table(name = "countryInfo")
+public class CountryInfo {
 
     private long id;
     private String countryName;
     private String vaccineRequirement;
     private String testRequirement;
     private int testValidationTimeByHours;
-    private String isForeigner;
+    private String foreignerAllowedToEnter;
 
-    public Countries() {
+    public CountryInfo() {
     }
 
     @Id
-    @Column(name = "country_id")
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getId() {
         return id;
@@ -59,11 +59,11 @@ public class Countries {
         this.testValidationTimeByHours = testValidationTimeByHours;
     }
 
-    public String getForeigner() {
-        return isForeigner;
+    public String getForeignerAllowedToEnter() {
+        return foreignerAllowedToEnter;
     }
 
-    public void setForeigner(String foreigner) {
-        isForeigner = foreigner;
+    public void setForeignerAllowedToEnter(String foreigner) {
+        this.foreignerAllowedToEnter = foreigner;
     }
 }
