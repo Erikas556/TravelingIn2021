@@ -148,8 +148,9 @@ public class Logika {
         System.out.println("\n DEVELOPER MENU");
         System.out.println("Select action with Letter :");
         System.out.println("\nA - Read a row from table.");
-        System.out.println("B - Modify a row from table.");
-        System.out.println("C - Delete a row from table.");
+        System.out.println("\nB - Create row in table.");
+        System.out.println("C - Modify a row from table.");
+        System.out.println("D - Delete a row from table.");
 
     }
 }
